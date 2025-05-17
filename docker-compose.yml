@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0.37
+    container_name: mysql_softcred
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: BASE1
+      MYSQL_USER: analyst
+      MYSQL_PASSWORD: analystpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./softcred_BASE1_clean:/docker-entrypoint-initdb.d
+      - datos_db:/var/lib/mysql
+volumes:
+  datos_db:
